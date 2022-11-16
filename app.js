@@ -1,6 +1,5 @@
 const readline = require('readline')
 const {stdin: input, stdout: output} = require('process')
-const { pipeline } = require('stream')
 const rl = readline.createInterface(input, output)
 
 let i =0
