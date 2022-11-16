@@ -7,7 +7,7 @@ let i =0
 
 
 function Pizza (numero, id, nom, prix){
-    this.numero = numero
+    this.numero= numero
     this.id = id
     this.nom = nom
     this.prix = prix
