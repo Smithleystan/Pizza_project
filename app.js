@@ -6,7 +6,8 @@ const rl = readline.createInterface(input, output)
 let i =0
 
 
-function Pizza (id, nom, prix){
+function Pizza (numero, id, nom, prix){
+    this.numero = numero
     this.id = id
     this.nom = nom
     this.prix = prix
@@ -15,10 +16,10 @@ function Pizza (id, nom, prix){
 
 let pizza = []
 
-pizza.push(new Pizza ("1", "3 fromages","12"))
-pizza.push(new Pizza ("2", "4 Miel","8"))
-pizza.push(new Pizza ("3","Authentique raclette", "12"))
-pizza.push(new Pizza ("4", "Cheesy & veggi","13"))
+pizza.push(new Pizza ("123","1", "3 fromages","12"))
+pizza.push(new Pizza ("234","2", "4 Miel","8"))
+pizza.push(new Pizza ("368","3","Authentique raclette", "12"))
+pizza.push(new Pizza ("456","4", "Cheesy & veggi","13"))
 
 console.log(pizza)
 
@@ -36,6 +37,8 @@ rl.question('choisissez votre pizza  : \n', choix=>{
     }
      
     console.log(pizza[i].nom)
+
+
    
 
 })
