@@ -27,9 +27,7 @@ class Commande {
     add(x) {
         this.panier.push(x)
     }
-    test(y) {
-        console.log(`${this.nom}, ${y}`)
-    }
+
 
 }
 
@@ -81,9 +79,10 @@ do {
 
     } else if (choix1 === 2) {
         let number = Number(window.prompt('saisir le numéro de la commande'))
-        let tab = client.find(clients=>clients.id === number)
+        let tab = client.find(clients => clients.id === number)
         console.table(tab)
-   
+        alert(`le prix total de la commande est ${tab.prix}`)
+
     }
 } while (choix1 !== 3)
 
