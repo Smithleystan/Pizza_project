@@ -17,15 +17,15 @@ pizzas.push(new Pizza("4", "Cheesy & veggi", 13))
 
 
 class Commande {
-    constructor(ID, nom, prix, pannier) {
-        this.ID = ID
+    constructor(id, nom, prix, panier) {
+        this.id = id
         this.nom = nom
         this.prix = prix
-        this.pannier = pannier
+        this.panier = panier
 
     }
     add(x) {
-        this.pannier.push(x)
+        this.panier.push(x)
     }
     test(y) {
         console.log(`${this.nom}, ${y}`)
@@ -54,35 +54,38 @@ let newClient
 
 do {
 
-    choix1 = Number(window.prompt('1 commmander \n 2 Quitter'))
+    choix1 = Number(window.prompt('1 commmander \n 2 recuperer commande \n 3 Quitter'))
     priceTotal = 0
     if (choix1 === 1) {
         let nom = window.prompt('saisisser votre nom')
-        newClient = (new Commande(1, nom, "", []))
-        console.log(newClient)
+        newClient = (new Commande((Math.random()).toFixed(2) * 1000, nom, "", []))
         do {
             ChoixPizza = window.prompt('Choisissez la pizza \n 1  Trois  fromages \n 2 quartre Miel \n 3 Authentique raclette \n 4 Cheesy & veggi')
             let pizz = pizzas.find(pizza => pizza.id == ChoixPizza)
-            console.log(pizz)
             qte = Number(window.prompt('Quel quantité voulez vous?'))
             price = qte * pizz.prix
             newClient.add(new Panier(pizz.nom, qte, pizz.prix, price))
 
-            console.log(newClient.pannier)
+            console.log(newClient.panier)
             continuer = Number(window.prompt('voulez vous encore commander \n 1 oui  \n 2 non'))
         } while (continuer !== 2)
-        for (i = 0; i < newClient.pannier.length; i++) {
+        for (i = 0; i < newClient.panier.length; i++) {
 
-            priceTotal = priceTotal + newClient.pannier[i].prix
+            priceTotal = priceTotal + newClient.panier[i].prix
         }
         newClient.prix = priceTotal
         console.log(newClient)
         client.push(newClient)
         console.log(client)
-        alert(`Le prix total de votre commande est de ${priceTotal}€` )
+        alert(`Le prix total de votre commande est de ${priceTotal}€`)
 
+    } else if (choix1 === 2) {
+        let number = Number(window.prompt('saisir le numéro de la commande'))
+        let tab = client.find(clients=>clients.id === number)
+        console.table(tab)
+   
     }
-} while (choix1 !== 2)
+} while (choix1 !== 3)
 
 
 
