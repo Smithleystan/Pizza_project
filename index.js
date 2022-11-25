@@ -34,9 +34,10 @@ class Commande {
 }
 
 class Panier {
-    constructor(ref, qte, prix) {
+    constructor(ref, qte, prixUnitaire, prix) {
         this.ref = ref
         this.qte = qte
+        this.prixUnitaire = prixUnitaire
         this.prix = prix
 
     }
@@ -54,7 +55,7 @@ let newClient
 do {
 
     choix1 = Number(window.prompt('1 commmander \n 2 Quitter'))
-
+    priceTotal = 0
     if (choix1 === 1) {
         let nom = window.prompt('saisisser votre nom')
         newClient = (new Commande(1, nom, "", []))
@@ -65,17 +66,8 @@ do {
             console.log(pizz)
             qte = Number(window.prompt('Quel quantité voulez vous?'))
             price = qte * pizz.prix
-            newClient.add(new Panier(pizz.nom, qte, price))
+            newClient.add(new Panier(pizz.nom, qte, pizz.prix, price))
 
-
-            // console.log(priceTotal)
-
-
-
-
-
-
-            // commande.push(new Commande(Math.random(), pizz.nom, pizz.prix))
             console.log(newClient.pannier)
             continuer = Number(window.prompt('voulez vous encore commander \n 1 oui  \n 2 non'))
         } while (continuer !== 2)
@@ -87,6 +79,7 @@ do {
         console.log(newClient)
         client.push(newClient)
         console.log(client)
+        alert(`Le prix total de votre commande est de ${priceTotal}€` )
 
     }
 } while (choix1 !== 2)
