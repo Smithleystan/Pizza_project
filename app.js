@@ -1,5 +1,8 @@
 import { Commande, Panier, pizzas, } from "./module/Class.js"
 
+let root = document.querySelector('.root')
+
+
 
 
 let choix1
@@ -52,6 +55,7 @@ do {
         maCommande = clients.find(client => client.id == recherche)
         console.table(maCommande)
         maCommande ? alert(`Le prix de la commande est de ${maCommande.prix}€`) : ""
+        root.innerHTML = `Le prix de la commande est de ${maCommande.prix}€`
     }
 
 
