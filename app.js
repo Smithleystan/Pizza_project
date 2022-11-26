@@ -1,38 +1,4 @@
-class Commande {
-    constructor(id, nom, panier, prix) {
-        this.id = id
-        this.nom = nom
-        this.panier = panier
-        this.prix = prix
-    }
-    add(x) {
-        this.panier.push(x)
-    }
-}
-
-class Pizza {
-    constructor(number, ref, prix) {
-        this.number = number
-        this.ref = ref
-        this.prix = prix
-    }
-}
-
-class Pannier {
-    constructor(ref, qte, prixUnitaire, prix) {
-        this.ref = ref
-        this.qte = qte
-        this.prixUnitaire = prixUnitaire
-        this.prix = prix
-    }
-}
-
-let pizzas = []
-
-pizzas.push(new Pizza(1, "margerita", 10))
-pizzas.push(new Pizza(2, "4 fromages", 12))
-pizzas.push(new Pizza(3, "chevre miel", 8))
-pizzas.push(new Pizza(4, "poulet ananas", 12))
+import { Commande, Panier, pizzas, } from "./module/Class.js"
 
 
 
@@ -48,6 +14,7 @@ let prixTotal = 0
 let clients = []
 let recherche
 let maCommande
+let prix = 0
 
 
 
@@ -63,14 +30,14 @@ do {
         do {
             choix2 = Number(window.prompt(`Choisissez votre pizza. \n 1 Marguerita \n 2 Quatre fromage \n 3 Chevre miel \n 4 Poulet ananas `))
             maPizza = pizzas.find(pizza => pizza.number === choix2)
-            qte = window.prompt('Quelle quantité voulez vous pour cette pizza')
+            qte = Number(window.prompt('Quelle quantité voulez vous pour cette pizza'))
             prix = qte * maPizza.prix
-            newClient.add(new Pannier(maPizza.ref, qte, maPizza.prix, prix))
+            newClient.add(new Panier(maPizza.ref, qte, maPizza.prix, prix))
             console.log(newClient)
             choix3 = Number(window.prompt('voulez ajouter d\'autre pizza a votre panier ? \n 1 oui \n 2 non '))
         } while (choix3 !== 2)
         prixTotal = 0
-        for (i = 0; i < newClient.panier.length; i++) {
+        for (let i = 0; i < newClient.panier.length; i++) {
             prixTotal = prixTotal + newClient.panier[i].prix
         }
         newClient.prix = prixTotal
@@ -80,18 +47,12 @@ do {
         console.log(clients)
 
 
-    } else if (choix1 === 2)
+    } else if (choix1 === 2) {
         recherche = Number(window.prompt('saisissez le numéro de votre commande'))
-    maCommande = clients.find(client => client.id == recherche)
-    maCommande ? console.table(maCommande) : ""
-    maCommande ? alert(`Le prix de la commande est de ${maCommande.prix}€`) : ""
-
-
-
-
-
-
-
+        maCommande = clients.find(client => client.id == recherche)
+        console.table(maCommande)
+        maCommande ? alert(`Le prix de la commande est de ${maCommande.prix}€`) : ""
+    }
 
 
 } while (choix1 !== 3)
