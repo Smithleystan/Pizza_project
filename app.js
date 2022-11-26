@@ -41,7 +41,7 @@ do {
             prixTotal = prixTotal + newClient.panier[i].prix
         }
         newClient.prix = prixTotal
-        let confirmation = Number(window.prompt(`Le prix total de votre commande est de ${prixTotal}€ \n Voulez vous confirmer votre commande ? \n 1 oui \n non 2 `))
+        let confirmation = Number(window.prompt(`Le prix total de votre commande est de ${prixTotal}€ \n Voulez vous confirmer votre commande ? \n 1 oui \n 2 non  `))
         confirmation === 1 ? clients.push(newClient) : alert('commande annulé')
         console.log(newClient)
         console.log(clients)
