@@ -35,11 +35,10 @@ pizzas.push(new Pizza(3, "chevre miel", 8))
 pizzas.push(new Pizza(4, "poulet ananas", 12))
 
 
-console.log(pizzas)
 
 let choix1
 let firstname
-let id
+let id = 0
 let newClient
 let choix2
 let maPizza
@@ -47,6 +46,8 @@ let qte
 let choix3
 let prixTotal = 0
 let clients = []
+let recherche
+let maCommande
 
 
 
@@ -79,7 +80,13 @@ do {
         console.log(clients)
 
 
-    }
+    } else if (choix1 === 2)
+        recherche = Number(window.prompt('saisissez le numéro de votre commande'))
+    maCommande = clients.find(client => client.id == recherche)
+    maCommande ? console.table(maCommande) : ""
+    maCommande ? alert(`Le prix de la commande est de ${maCommande.prix}€`) : ""
+
+
 
 
 
