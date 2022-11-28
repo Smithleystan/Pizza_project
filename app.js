@@ -22,14 +22,14 @@ let prix = 0
 
 
 
-
 do {
     choix1 = Number(window.prompt('1 Commander \n 2 Rechercher commande \n 3 Quitter'))
 
     if (choix1 === 1) {
         firstname = window.prompt('Saisissez votre nom')
-        id = (Math.random() * 1000).toFixed(0)
+        id = (Math.random() * 1000000000000000).toFixed(0)
         newClient = new Commande(id, firstname, [])
+        console.table(newClient)
         do {
             choix2 = Number(window.prompt(`Choisissez votre pizza. \n 1 Marguerita \n 2 Quatre fromage \n 3 Chevre miel \n 4 Poulet ananas `))
             maPizza = pizzas.find(pizza => pizza.number === choix2)
